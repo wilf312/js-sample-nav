@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>testSite</title>
+<meta charset="UTF-8" />
+
+
+<style type="text/css">
+
+/**********
+* リセット
+*/
+.content {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.2);
+}
+
+ul,li,p {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+
+
+/**********
+* 大項目ナビ
+*/
+
+.nav{ /zoom : 1; }
+.nav:after{ content : ''; display : block; clear : both; height:0; }
+
+
+.nav > li {
+    width: 100px;
+    float: left;
+    position: relative;
+}
+
+
+/**********
+* 少項目ナビ
+*/
+.nav > li > ul {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    height: 0;
+    overflow: hidden;
+}
+
+
+
+</style>
+
+</head>
+<body>
+<div class="content">
+
+    <h1>testSite</h1>
+    <p><a href="https://github.com/wilf312/js-sample-nav" target="_blank">https://github.com/wilf312/js-sample-nav</a></p>
+
+
+    <ul class="nav">
+        <li><p>aaaa</p></li>
+        <li><p>aaaa</p></li>
+        <li><p>aaaa</p></li>
+        <li><p>aaaa</p></li>
+        <li><p>aaaa</p>
+            <ul>
+                <li>11111</li>
+                <li>22222</li>
+                <li>33333</li>
+                <li>44444</li>
+                <li>55555</li>
+            </ul>
+        </li>
+    </ul>
+
+
+</div><!-- /.content -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript">
+<!--
+
+
+// 大項目
+var $nav = $('.nav');
+// 大項目のリスト
+var $navList = $nav.find('> li');
+
+$navList.each(function(_index) {
+    var $list = $(this);
+
+    console.log(_index);
+    console.log($list.text());
+
+    $list
+    .on('mouseenter', function() {
+        console.log('入った');
+        $list.find('> ul').animate({
+            height: 200
+        }, 300);
+    })
+    .on('mouseout', function() {
+        console.log('でた');
+        $list.find('> ul').animate({
+            height: 0
+        }, 300);
+
+    })
+
+
+
+
+
+})
+
+
+
+-->
+</script>
+
+</body>
+</html>
